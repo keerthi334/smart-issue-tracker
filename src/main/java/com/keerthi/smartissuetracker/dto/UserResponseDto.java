@@ -1,31 +1,19 @@
-package com.keerthi.smartissuetracker.entity;
+package com.keerthi.smartissuetracker.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserResponseDto {
     private Long id;
-
     private String name;
-
     private String email;
+    private String role;
 
-    private String password;
-
-    private String role; // ADMIN, DEV, REPORTER
-
-    public User() {
+    // ✅ Constructors
+    public UserResponseDto() {
     }
 
-    public User(Long id, String name, String email, String password, String role) {
+    public UserResponseDto(Long id, String name, String email, String role) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
         this.role = role;
     }
 
@@ -40,10 +28,6 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getRole() {
@@ -61,10 +45,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setRole(String role) {

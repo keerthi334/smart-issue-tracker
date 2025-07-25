@@ -1,38 +1,20 @@
-package com.keerthi.smartissuetracker.entity;
+package com.keerthi.smartissuetracker.dto;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
-import jakarta.persistence.*;
+public class UserRequestDto {
 
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @NotBlank(message = "Name is required")
     private String name;
 
+
+    @Email(message = "Invalid email format")
     private String email;
 
+    @NotBlank(message = "Password is required")
     private String password;
+    private String role;
 
-    private String role; // ADMIN, DEV, REPORTER
-
-    public User() {
-    }
-
-    public User(Long id, String name, String email, String password, String role) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
-
-    // ✅ Getters
-    public Long getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -41,6 +23,7 @@ public class User {
     public String getEmail() {
         return email;
     }
+
 
     public String getPassword() {
         return password;
@@ -51,10 +34,6 @@ public class User {
     }
 
     // ✅ Setters
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
